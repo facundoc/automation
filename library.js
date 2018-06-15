@@ -1,5 +1,5 @@
 // try{
-var webdriver = require('selenium-webdriver'),
+var webdriver = require('selenium-webdriver'), 
   // {
   //   describe,
   //   it,
