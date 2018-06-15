@@ -15,6 +15,7 @@ describe("library app scenarios", function() {
       beforeEach(function() {
         driver = new webdriver.Builder().forBrowser('chrome').build();
         driver.get("https://library-app.firebaseapp.com/");
+        // driver.wait(until.elementLocated(By.css(".page-footer")), 20000);
         console.log("before");
 
       });
@@ -27,7 +28,7 @@ describe("library app scenarios", function() {
         driver.findElement(By.css('input')).sendKeys('user@gmail.com');
         driver.wait(function() {
           return submitBtn.getCssValue('opacity').then(function(result) {
-            return result === "1";
+            return result == "1";
           })
         }, 20000);
       });
