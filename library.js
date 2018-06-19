@@ -19,38 +19,54 @@ describe("library app scenarios", function() {
         console.log("before");
 
       });
-      afterEach(function() {
-        console.log("after");
-        driver.quit();
-      });
-      it('changes button opacity when email is valid', function() {
-        var submitBtn = driver.findElement(By.css('btn-lg'));
+      // afterEach(function() {
+      //   console.log("after");
+      //   driver.quit();
+      // });
+      it.only('changes button opacity when email is valid', function() {
+        console.log("empezamos");
+        
+        // var submitBtn = driver.findElement(By.css('.btn-lg'));
+        console.log("variable creada");
+        
         driver.findElement(By.css('input')).sendKeys('user@gmail.com');
-        driver.wait(function() {
-          return submitBtn.getCssValue('opacity').then(function(result) {
-            return result == "1";
-          })
-        }, 20000);
+        console.log("buscado el input");
+  
+        var foundEl = driver.findElement(By.css('.btn-lg')).then(function(result) {
+            
+          console.log("entramos en el then");
+            
+            return result.getCssValue('opacity').then(function (el){
+              console.log( "comparacion: ", el == "1");
+              
+              return el == "1";
+              
+            });
+
+          });
+        
+          console.log("despues de opacity");
+          
       });
 
 
-      it('works with mocha', function() {
-            driver.findElement(By.css('input')).sendKeys('usergmail.com');
-            driver.wait(until.elementLocated(By.css('.alert-success')), 20000).then(function(el) {
-              el.getText().then(function(txt) {
-                console.log(txt);
-              });
-            });
-      });
+      // it('works with mocha', function() {
+      //       driver.findElement(By.css('input')).sendKeys('usergmail.com');
+      //       driver.wait(until.elementLocated(By.css('.alert-success')), 20000).then(function(el) {
+      //         el.getText().then(function(txt) {
+      //           console.log(txt);
+      //         });
+      //       });
+      // });
 
-              it('nav test', function() {
-                driver.findElement(By.css('nav')).getText().then(function(txt) {
-                  console.log(txt);
-                });
+      //         it('nav test', function() {
+      //           driver.findElement(By.css('nav')).getText().then(function(txt) {
+      //             console.log(txt);
+      //           });
 
-              });
+      //         });
 
-            });
+});
   // } catch (error){
   //   console.log(error);
   // }
