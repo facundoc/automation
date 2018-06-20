@@ -19,33 +19,37 @@ describe("library app scenarios", function() {
         console.log("before");
 
       });
-      // afterEach(function() {
-      //   console.log("after");
-      //   driver.quit();
-      // });
-      it.only('changes button opacity when email is valid', function() {
+      afterEach(function() {
+        console.log("after");
+        driver.quit();
+      });
+      it.only('changes button opacity when email is valid', function(done) {
         console.log("empezamos");
-        
+        var isVisible;
         // var submitBtn = driver.findElement(By.css('.btn-lg'));
         console.log("variable creada");
         
-        driver.findElement(By.css('input')).sendKeys('user@gmail.com');
+        driver.findElement(By.css('input')).sendKeys('user@mail.com');
         console.log("buscado el input");
   
-        var foundEl = driver.findElement(By.css('.btn-lg')).then(function(result) {
+        driver.findElement(By.css('.btn-lg')).then(function(result) {
             
           console.log("entramos en el then");
-            
             return result.getCssValue('opacity').then(function (el){
-              console.log( "comparacion: ", el == "1");
-              
-              return el == "1";
+              isVisible = el == "1";
+              console.log("variable ", isVisible); 
+              if (isVisible){
+                return done()} 
+              else {
+                return done("el elemento no es visible")
+              };
               
             });
 
           });
         
           console.log("despues de opacity");
+          
           
       });
 
