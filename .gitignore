@@ -1,3 +1,4 @@
 .DS_Store
 libraryOLD.js
 node_modules/
+mochawesome-report
